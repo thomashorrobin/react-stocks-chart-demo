@@ -1,8 +1,31 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import NzxChart from './chart/chart';
+import { AIAData } from "./chart/data";
+import { timeParse } from 'd3-time-format';
 
 class App extends Component {
+    constructor(){
+        super();
+        let chartData = [];
+        const aiaData = AIAData();
+        aiaData.forEach((d) => {
+          let newDataPoint = {};
+          newDataPoint.date = new Date(timeParse("%Y-%m-%d")(d.date).getTime());
+          newDataPoint.open = d.open_price;
+          newDataPoint.high = d.high_price;
+          newDataPoint.low = d.low_price;
+          newDataPoint.close = d.close_price;
+          newDataPoint.volume = d.volume;
+          console.log(newDataPoint);
+          console.log(d);
+          chartData.push(newDataPoint);
+        });
+        this.cd = chartData;
+    }
+
+
   render() {
     return (
       <div className="App">
@@ -10,9 +33,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <NzxChart width={1000} ratio={1} data={this.cd} />
       </div>
     );
   }
