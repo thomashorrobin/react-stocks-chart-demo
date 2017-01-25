@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import NzxChart from './chart/chart';
+import BarChart from './chart/chart_bar';
 import { AIAData } from "./chart/data";
 import { timeParse } from 'd3-time-format';
 
@@ -26,6 +27,14 @@ class App extends Component {
 
 
   render() {
+    const x = [
+        { "x": "Apple", "y": 10 },
+        { "x": "Banana", "y": 15 },
+        { "x": "Strawberry", "y": 20 },
+        { "x": "Lemon", "y": 25 },
+        { "x": "Cherry", "y": 30 },
+        { "x": "Peach", "y": 35 }
+    ];
     return (
       <div className="App">
         <div className="App-header">
@@ -33,6 +42,8 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <NzxChart width={1000} ratio={1} data={this.cd} />
+        <hr />
+        <BarChart width={1000} ratio={1} data={x} />
       </div>
     );
   }
