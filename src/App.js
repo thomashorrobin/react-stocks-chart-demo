@@ -18,10 +18,9 @@ class App extends Component {
           newDataPoint.low = d.low_price;
           newDataPoint.close = d.close_price;
           newDataPoint.volume = d.volume;
-          console.log(newDataPoint);
-          console.log(d);
           chartData.push(newDataPoint);
         });
+        console.info(chartData.length + ' items added to chart data');
         this.cd = chartData;
     }
 
