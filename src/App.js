@@ -35,15 +35,16 @@ class App extends Component {
         { "x": "Cherry", "y": 30 },
         { "x": "Peach", "y": 35 }
     ];
+    const width = 700;
     return (
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <NzxChart width={1000} ratio={1} data={this.cd} />
+        <NzxChart width={width} ratio={1} data={this.cd} />
         <hr />
-        <BarChart width={1000} ratio={1} data={x} />
+        <BarChart width={width} ratio={1} data={x} />
       </div>
     );
   }
