@@ -9,6 +9,9 @@ import { timeParse } from 'd3-time-format';
 class App extends Component {
     constructor(){
         super();
+    }
+
+    getAiaData() {
         let chartData = [];
         const aiaData = AIAData();
         aiaData.forEach((d) => {
@@ -22,7 +25,7 @@ class App extends Component {
           chartData.push(newDataPoint);
         });
         console.info(chartData.length + ' items added to chart data');
-        this.cd = chartData;
+        return chartData;
     }
 
 
@@ -35,6 +38,7 @@ class App extends Component {
         { "x": "Cherry", "y": 30 },
         { "x": "Peach", "y": 35 }
     ];
+    const y = this.getAiaData();
     const width = 700;
     return (
       <div className="App">
@@ -42,7 +46,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <NzxChart width={width} ratio={1} data={this.cd} />
+        <NzxChart width={width} ratio={1} data={y} />
         <hr />
         <BarChart width={width} ratio={1} data={x} />
       </div>
