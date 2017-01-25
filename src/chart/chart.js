@@ -40,6 +40,6 @@ NzxChart.propTypes = {
 NzxChart.defaultProps = {
 	type: "svg",
 };
-// NzxChart = fitWidth(NzxChart);
+NzxChart = fitWidth(NzxChart);
 
 export default NzxChart;
